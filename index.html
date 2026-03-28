@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WanderLux – Curated Travel Experiences</title>
+  <meta name="description" content="Discover premium travel experiences across India and the world with WanderLux — handpicked destinations, stays and vehicles.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+
+  <!-- ── Navbar ─────────────────────────────────────────── -->
+  <div class="nav-overlay" id="navOverlay"></div>
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo" data-testid="nav-logo">WanderLux</a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link" data-testid="nav-home">Home</a>
+        <a href="destination.html" class="nav-link" data-testid="nav-destinations">Destinations</a>
+        <a href="house.html" class="nav-link" data-testid="nav-houses">Houses</a>
+        <a href="car-rental.html" class="nav-link" data-testid="nav-cars">Car Rental</a>
+        <a href="queries.html" class="nav-link" data-testid="nav-queries">Queries</a>
+        <button class="btn btn--accent btn--sm" data-testid="nav-login-btn" style="margin-left:0.5rem">Login</button>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" data-testid="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── Hero ───────────────────────────────────────────── -->
+  <section class="hero hero--home" id="home" aria-label="Hero section">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <span class="hero-tagline">Premium Travel Curated for You</span>
+      <h1 class="hero-title">Discover the World,<br><em>Your Way</em></h1>
+      <p class="hero-subtitle">Handpicked destinations, luxury stays and seamless vehicle rentals across India and beyond — all in one place.</p>
+      <div class="hero-buttons">
+        <a href="destination.html" class="btn btn--accent btn--lg" data-testid="hero-explore-btn">
+          <i class="fa-solid fa-compass"></i> Explore Destinations
+        </a>
+        <a href="queries.html" class="btn btn--outline-white btn--lg" data-testid="hero-contact-btn">
+          Talk to Us
+        </a>
+      </div>
+      <div class="hero-badges">
+        <div class="hero-badge"><strong>32+</strong><span>Destinations</span></div>
+        <div class="hero-badge"><strong>22+</strong><span>Curated Stays</span></div>
+        <div class="hero-badge"><strong>27+</strong><span>Vehicles</span></div>
+        <div class="hero-badge"><strong>4.8</strong><span>Avg. Rating</span></div>
+      </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <span>Scroll to explore</span>
+      <div class="hero-scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- ── Search & Category Tabs ─────────────────────────── -->
+  <section class="search-section" id="search" aria-label="Search and filter">
+    <div class="container">
+      <div class="search-wrapper">
+        <div class="search-input-wrap">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            type="text"
+            id="homeSearch"
+            class="search-input"
+            placeholder="Search destinations, houses, cars..."
+            aria-label="Search"
+            data-testid="home-search-input"
+          >
+        </div>
+        <div class="search-divider"></div>
+        <select id="budgetFilter" class="search-select" aria-label="Budget filter" data-testid="budget-filter">
+          <option value="">All Budgets</option>
+          <option value="0-10000">Under ₹10,000</option>
+          <option value="10000-25000">₹10,000 – ₹25,000</option>
+          <option value="25000-50000">₹25,000 – ₹50,000</option>
+          <option value="50000-999999">Above ₹50,000</option>
+        </select>
+        <button class="search-btn" id="homeSearchBtn" data-testid="home-search-btn" aria-label="Search">
+          <i class="fa-solid fa-magnifying-glass"></i> Search
+        </button>
+      </div>
+      <div class="category-tabs" id="categoryTabs" role="tablist" aria-label="Category filters">
+        <button class="category-btn active" data-category="destinations" data-testid="cat-btn-destinations" role="tab">
+          <i class="fa-solid fa-map-location-dot"></i> Destinations
+        </button>
+        <button class="category-btn" data-category="houses" data-testid="cat-btn-houses" role="tab">
+          <i class="fa-solid fa-house"></i> Houses
+        </button>
+        <button class="category-btn" data-category="cars" data-testid="cat-btn-cars" role="tab">
+          <i class="fa-solid fa-car"></i> Cars
+        </button>
+        <button class="category-btn" data-category="weekend" data-testid="cat-btn-weekend" role="tab">
+          <i class="fa-solid fa-sun"></i> Weekend Trips
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Category Results ───────────────────────────────── -->
+  <section class="section" id="categoryResults" aria-label="Search results">
+    <div class="container">
+      <div class="results-header">
+        <h2 class="results-title" id="resultsTitle">Popular Destinations</h2>
+        <a href="destination.html" class="view-all-link" id="viewAllLink" data-testid="view-all-link">
+          View All <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+      <div class="cards-grid" id="resultsGrid" role="list" aria-live="polite" aria-label="Results"></div>
+    </div>
+  </section>
+
+  <!-- ── Featured Destinations (Bento) ─────────────────── -->
+  <section class="section section--alt" id="featured" aria-label="Featured destinations">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tagline">Editor's Picks</span>
+        <h2 class="section-title reveal">Featured Destinations</h2>
+        <p class="section-subtitle reveal">Handpicked by our travel experts for unforgettable experiences across the globe.</p>
+        <div class="divider"></div>
+      </div>
+      <div class="bento-grid reveal-scale">
+        <div class="bento-item">
+          <img src="https://images.unsplash.com/photo-1523980145253-50327d891e0e?auto=format&fit=crop&w=1200&q=80" alt="Taj Mahal, India" class="bento-img" loading="lazy">
+          <div class="bento-overlay">
+            <h3>Taj Mahal</h3>
+            <div class="bento-loc"><i class="fa-solid fa-location-dot"></i> Agra, India</div>
+            <div class="bento-price">from ₹8,499</div>
+          </div>
+        </div>
+        <div class="bento-item">
+          <img src="https://images.unsplash.com/photo-1660388330411-26f4cf299a64?auto=format&fit=crop&w=800&q=80" alt="Swiss Alps" class="bento-img" loading="lazy">
+          <div class="bento-overlay">
+            <h3>Swiss Alps</h3>
+            <div class="bento-loc"><i class="fa-solid fa-location-dot"></i> Switzerland</div>
+            <div class="bento-price">from ₹52,999</div>
+          </div>
+        </div>
+        <div class="bento-item">
+          <img src="https://images.unsplash.com/photo-1707893013488-51672ef83425?auto=format&fit=crop&w=800&q=80" alt="Kerala Backwaters" class="bento-img" loading="lazy">
+          <div class="bento-overlay">
+            <h3>Kerala Backwaters</h3>
+            <div class="bento-loc"><i class="fa-solid fa-location-dot"></i> Kerala, India</div>
+            <div class="bento-price">from ₹9,499</div>
+          </div>
+        </div>
+        <div class="bento-item">
+          <img src="https://images.unsplash.com/photo-1729605411084-adde365d534a?auto=format&fit=crop&w=800&q=80" alt="Bali, Indonesia" class="bento-img" loading="lazy">
+          <div class="bento-overlay">
+            <h3>Bali</h3>
+            <div class="bento-loc"><i class="fa-solid fa-location-dot"></i> Indonesia</div>
+            <div class="bento-price">from ₹24,999</div>
+          </div>
+        </div>
+        <div class="bento-item">
+          <img src="https://images.unsplash.com/photo-1677268357140-146d5c15307d?auto=format&fit=crop&w=800&q=80" alt="Santorini, Greece" class="bento-img" loading="lazy">
+          <div class="bento-overlay">
+            <h3>Santorini</h3>
+            <div class="bento-loc"><i class="fa-solid fa-location-dot"></i> Greece</div>
+            <div class="bento-price">from ₹48,999</div>
+          </div>
+        </div>
+        <div class="bento-item">
+          <img src="https://images.unsplash.com/photo-1669861163189-e966f4971842?auto=format&fit=crop&w=800&q=80" alt="Paris, France" class="bento-img" loading="lazy">
+          <div class="bento-overlay">
+            <h3>Paris</h3>
+            <div class="bento-loc"><i class="fa-solid fa-location-dot"></i> France</div>
+            <div class="bento-price">from ₹45,999</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Testimonials (exactly 2) ──────────────────────── -->
+  <section class="section" id="testimonials" aria-label="Testimonials">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tagline">Real Experiences</span>
+        <h2 class="section-title reveal">What Our Travellers Say</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal-left">
+          <div class="testimonial-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"WanderLux planned our Bali honeymoon from flights to villa stay and everything was absolutely perfect. The personalised itinerary and 24/7 support made it stress-free and magical. We'll book only through WanderLux forever!"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="Priya Sharma">
+            </div>
+            <div>
+              <div class="testimonial-name">Priya &amp; Arjun Sharma</div>
+              <div class="testimonial-trip">Bali Honeymoon Package · Nov 2024</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal-right">
+          <div class="testimonial-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Our Ladakh road trip in a Mahindra Thar was epic — WanderLux sorted the vehicle, stay at a Spiti homestay and gave us a curated route with tips. The whole experience felt like it was designed just for our group of friends."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Rohit Verma">
+            </div>
+            <div>
+              <div class="testimonial-name">Rohit Verma</div>
+              <div class="testimonial-trip">Leh-Ladakh Adventure · Aug 2024</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Top Picked Gallery ─────────────────────────────── -->
+  <section class="section section--alt" id="gallery" aria-label="Destination gallery">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tagline">Visual Journeys</span>
+        <h2 class="section-title reveal">Top Picked Destinations</h2>
+        <p class="section-subtitle reveal">Hover to reveal the magic of each destination.</p>
+        <div class="divider"></div>
+      </div>
+      <div class="gallery-grid reveal-scale">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=800&q=80" alt="Goa" class="gallery-img" loading="lazy">
+          <div class="gallery-overlay">
+            <h4>Goa</h4>
+            <p class="gallery-place"><i class="fa-solid fa-location-dot"></i> India</p>
+            <span class="gallery-price">from ₹8,999</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1677268357140-146d5c15307d?auto=format&fit=crop&w=800&q=80" alt="Santorini" class="gallery-img" loading="lazy">
+          <div class="gallery-overlay">
+            <h4>Santorini</h4>
+            <p class="gallery-place"><i class="fa-solid fa-location-dot"></i> Greece</p>
+            <span class="gallery-price">from ₹48,999</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1507699622108-4be3abd695ad?auto=format&fit=crop&w=800&q=80" alt="New Zealand" class="gallery-img" loading="lazy">
+          <div class="gallery-overlay">
+            <h4>New Zealand</h4>
+            <p class="gallery-place"><i class="fa-solid fa-location-dot"></i> New Zealand</p>
+            <span class="gallery-price">from ₹58,999</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1729605411084-adde365d534a?auto=format&fit=crop&w=800&q=80" alt="Bali" class="gallery-img" loading="lazy">
+          <div class="gallery-overlay">
+            <h4>Bali</h4>
+            <p class="gallery-place"><i class="fa-solid fa-location-dot"></i> Indonesia</p>
+            <span class="gallery-price">from ₹24,999</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=800&q=80" alt="Maldives" class="gallery-img" loading="lazy">
+          <div class="gallery-overlay">
+            <h4>Maldives</h4>
+            <p class="gallery-place"><i class="fa-solid fa-location-dot"></i> Maldives</p>
+            <span class="gallery-price">from ₹65,999</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1707893013488-51672ef83425?auto=format&fit=crop&w=800&q=80" alt="Kerala" class="gallery-img" loading="lazy">
+          <div class="gallery-overlay">
+            <h4>Kerala</h4>
+            <p class="gallery-place"><i class="fa-solid fa-location-dot"></i> India</p>
+            <span class="gallery-price">from ₹9,499</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1531168556467-80aace0d0144?auto=format&fit=crop&w=800&q=80" alt="Iceland" class="gallery-img" loading="lazy">
+          <div class="gallery-overlay">
+            <h4>Iceland</h4>
+            <p class="gallery-place"><i class="fa-solid fa-location-dot"></i> Iceland</p>
+            <span class="gallery-price">from ₹55,999</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1663316037756-f0ecdcf62dac?q=80&w=1170&auto=format&fit=crop&w=800&q=80" alt="Leh-Ladakh" class="gallery-img" loading="lazy">
+          <div class="gallery-overlay">
+            <h4>Leh-Ladakh</h4>
+            <p class="gallery-place"><i class="fa-solid fa-location-dot"></i> India</p>
+            <span class="gallery-price">from ₹11,999</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Why Choose Us ──────────────────────────────────── -->
+  <section class="section" id="why" aria-label="Why choose us">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tagline">The WanderLux Promise</span>
+        <h2 class="section-title reveal">Why Travellers Choose Us</h2>
+        <p class="section-subtitle reveal">We go beyond booking — we craft experiences that become lifelong memories.</p>
+        <div class="divider"></div>
+      </div>
+      <div class="why-grid">
+        <div class="why-item reveal">
+          <div class="why-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <h3>100% Secure Booking</h3>
+          <p>Every booking is protected with verified listings, secure payment gateways and a full refund guarantee.</p>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-icon"><i class="fa-solid fa-headset"></i></div>
+          <h3>24/7 Expert Support</h3>
+          <p>Our dedicated travel experts are available around the clock — before, during and after your journey.</p>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-icon"><i class="fa-solid fa-tags"></i></div>
+          <h3>Best Price Guarantee</h3>
+          <p>We match any lower price you find. Transparent pricing with no hidden fees or surprise surcharges.</p>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-icon"><i class="fa-solid fa-gem"></i></div>
+          <h3>Curated Premium Picks</h3>
+          <p>Every listing is hand-verified by our experts for quality, authenticity and exceptional traveller experience.</p>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+          <h3>Personalised Itineraries</h3>
+          <p>Get custom travel plans tailored to your interests, travel style and budget from our expert planners.</p>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-icon"><i class="fa-solid fa-leaf"></i></div>
+          <h3>Sustainable Travel</h3>
+          <p>We partner with eco-conscious stays and operators committed to preserving the natural beauty of every destination.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ─────────────────────────────────────────── -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo" data-testid="footer-logo">WanderLux</a>
+          <p>Curating extraordinary travel experiences across India and the world. Your journey, perfected.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" data-testid="footer-home-link">Home</a></li>
+            <li><a href="destination.html" data-testid="footer-dest-link">Destinations</a></li>
+            <li><a href="house.html" data-testid="footer-house-link">Houses &amp; Stays</a></li>
+            <li><a href="car-rental.html" data-testid="footer-car-link">Car Rental</a></li>
+            <li><a href="queries.html" data-testid="footer-queries-link">Queries &amp; Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="destination.html">India Destinations</a></li>
+            <li><a href="destination.html">International Trips</a></li>
+            <li><a href="destination.html">Weekend Getaways</a></li>
+            <li><a href="house.html">Luxury Villas</a></li>
+            <li><a href="car-rental.html">Self-Drive Cars</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <span>+91 89303 77270</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <span>hello@wanderlux.in</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Rewari, Haryana - 123401</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-clock"></i>
+            <span>Any Day: 9 AM – 8 PM</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 WanderLux. All rights reserved. Crafted with love for travellers.</p>
+        <div class="footer-legal">
+          <a href="queries.html">Privacy Policy</a>
+          <a href="queries.html">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── Booking Modal ──────────────────────────────────── -->
+  <div id="bookingModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-container">
+      <button class="modal-close" id="closeModal" data-testid="modal-close-btn" aria-label="Close modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="modal-header">
+        <p class="modal-tagline">Secure Booking</p>
+        <h2 class="modal-title" id="modalTitle">Book Your Experience</h2>
+        <p class="modal-item-name" id="bookingItemName"></p>
+      </div>
+      <form id="bookingForm" class="booking-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="bookingName">Full Name</label>
+            <input type="text" id="bookingName" name="name" placeholder="Your full name" required data-testid="booking-name-input">
+          </div>
+          <div class="form-group">
+            <label for="bookingPhone">Phone Number</label>
+            <input type="tel" id="bookingPhone" name="phone" placeholder="+91 98765 43210" required data-testid="booking-phone-input">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="bookingEmail">Email Address</label>
+          <input type="email" id="bookingEmail" name="email" placeholder="you@example.com" required data-testid="booking-email-input">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="bookingDate">Travel Date</label>
+            <input type="date" id="bookingDate" name="date" required data-testid="booking-date-input">
+          </div>
+          <div class="form-group">
+            <label for="bookingGuests">Number of Persons</label>
+            <input type="number" id="bookingGuests" name="guests" placeholder="e.g. 2" min="1" max="50" required data-testid="booking-guests-input">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="bookingNotes">Special Requests / Notes</label>
+          <textarea id="bookingNotes" name="notes" placeholder="Any special requirements, dietary needs, accessibility, etc." data-testid="booking-notes-input"></textarea>
+        </div>
+        <button type="submit" class="form-submit-btn" data-testid="booking-submit-btn">
+          <i class="fa-solid fa-check-circle"></i> Confirm Booking
+        </button>
+      </form>
+      <div id="bookingSuccess" class="booking-success" role="alert">
+        <i class="fa-solid fa-circle-check"></i>
+        <h3>Booking Confirmed!</h3>
+        <p>Thank you! We'll reach out within 2 hours to confirm your itinerary details.</p>
+        <button class="btn btn--primary btn--md" id="closeSuccessBtn" data-testid="booking-success-close" style="margin-top:1.5rem">
+          Back to Explore
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="main.js"></script>
+  <script src="booking.js"></script>
+  <script src="search.js"></script>
+</body>
+</html>

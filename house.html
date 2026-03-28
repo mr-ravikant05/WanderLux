@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Houses &amp; Stays – WanderLux</title>
+  <meta name="description" content="Book handpicked villas, cottages, houseboats and boutique hotels across India and the world with WanderLux.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+
+  <div class="nav-overlay" id="navOverlay"></div>
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo" data-testid="nav-logo">WanderLux</a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link" data-testid="nav-home">Home</a>
+        <a href="destination.html" class="nav-link" data-testid="nav-destinations">Destinations</a>
+        <a href="house.html" class="nav-link" data-testid="nav-houses">Houses</a>
+        <a href="car-rental.html" class="nav-link" data-testid="nav-cars">Car Rental</a>
+        <a href="queries.html" class="nav-link" data-testid="nav-queries">Queries</a>
+        <button class="btn btn--accent btn--sm" data-testid="nav-login-btn" style="margin-left:0.5rem">Login</button>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" data-testid="nav-hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── Hero ───────────────────────────────────────────── -->
+  <section class="hero hero--house" aria-label="Houses hero">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content page-hero">
+      <span class="hero-tagline">22+ Curated Properties</span>
+      <h1 class="page-hero-title">Stay Like<br><em style="color:var(--color-accent);font-style:italic">Royalty</em></h1>
+      <p class="page-hero-sub">Luxury villas, heritage havelis, secluded cottages and serene houseboats — your perfect home away from home.</p>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <span>Browse properties</span>
+      <div class="hero-scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- ── Search + Filters ───────────────────────────────── -->
+  <section class="search-section" aria-label="Search properties">
+    <div class="container">
+      <div class="search-wrapper">
+        <div class="search-input-wrap">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="houseSearch" class="search-input" placeholder="Search by name, location or type..." aria-label="Search properties" data-testid="house-search-input">
+        </div>
+        <div class="search-divider"></div>
+        <select id="houseType" class="search-select" aria-label="Property type" data-testid="house-type-filter">
+          <option value="">All Types</option>
+          <option value="Villa">Villa</option>
+          <option value="Cottage">Cottage</option>
+          <option value="Apartment">Apartment</option>
+          <option value="Houseboat">Houseboat</option>
+          <option value="Heritage Hotel">Heritage Hotel</option>
+          <option value="Hotel Room">Hotel Room</option>
+          <option value="Homestay">Homestay</option>
+          <option value="Treehouse">Treehouse</option>
+          <option value="Lodge">Lodge</option>
+          <option value="Luxury Camp">Luxury Camp</option>
+        </select>
+        <div class="search-divider"></div>
+        <select id="housePrice" class="search-select" aria-label="Price per night" data-testid="house-price-filter">
+          <option value="">All Budgets</option>
+          <option value="0-3000">Under ₹3,000</option>
+          <option value="3000-6000">₹3,000 – ₹6,000</option>
+          <option value="6000-10000">₹6,000 – ₹10,000</option>
+          <option value="10000-999999">Above ₹10,000</option>
+        </select>
+        <button class="search-btn" data-testid="house-search-btn" aria-label="Search">
+          <i class="fa-solid fa-magnifying-glass"></i> Search
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Property Listings ──────────────────────────────── -->
+  <section class="section" aria-label="Property listings">
+    <div class="container">
+      <div class="results-header">
+        <h2 class="results-title">All Properties</h2>
+        <span class="results-count" id="houseCount" aria-live="polite">Loading...</span>
+      </div>
+      <div class="cards-grid" id="houseGrid" role="list" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- ── Amenities Section ──────────────────────────────── -->
+  <section class="section section--alt" aria-label="Amenities">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tagline">Premium Inclusions</span>
+        <h2 class="section-title reveal">Every Stay Comes With</h2>
+        <p class="section-subtitle reveal">We partner only with properties that meet our high-standard amenity checklist.</p>
+        <div class="divider"></div>
+      </div>
+      <div class="amenities-grid">
+        <div class="amenity-item reveal"><i class="fa-solid fa-wifi"></i> High-Speed Wi-Fi</div>
+        <div class="amenity-item reveal"><i class="fa-solid fa-snowflake"></i> Air Conditioning</div>
+        <div class="amenity-item reveal"><i class="fa-solid fa-hot-tub-person"></i> Swimming Pool Access</div>
+        <div class="amenity-item reveal"><i class="fa-solid fa-utensils"></i> Kitchen / Kitchenette</div>
+        <div class="amenity-item reveal"><i class="fa-solid fa-car"></i> Free Parking</div>
+        <div class="amenity-item reveal"><i class="fa-solid fa-dumbbell"></i> Gym / Fitness Area</div>
+        <div class="amenity-item reveal"><i class="fa-solid fa-spa"></i> Spa &amp; Wellness</div>
+        <div class="amenity-item reveal"><i class="fa-solid fa-tv"></i> Smart TV / OTT</div>
+        <div class="amenity-item reveal"><i class="fa-solid fa-shield-halved"></i> 24-Hour Security</div>
+        <div class="amenity-item reveal"><i class="fa-solid fa-fire"></i> Fireplace / Bonfire</div>
+        <div class="amenity-item reveal"><i class="fa-solid fa-bell-concierge"></i> Concierge Service</div>
+        <div class="amenity-item reveal"><i class="fa-solid fa-paw"></i> Pet Friendly (select)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Top Stays Benefits ─────────────────────────────── -->
+  <section class="section" aria-label="Stay benefits">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tagline">The WanderLux Stays Promise</span>
+        <h2 class="section-title reveal">Why Book With Us</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="info-cards-grid">
+        <div class="info-card reveal">
+          <div class="info-card-icon"><i class="fa-solid fa-badge-check"></i></div>
+          <h3>Verified Properties</h3>
+          <p>Every property on our platform is physically inspected and verified by our quality assurance team.</p>
+        </div>
+        <div class="info-card reveal">
+          <div class="info-card-icon"><i class="fa-solid fa-percent"></i></div>
+          <h3>No Hidden Charges</h3>
+          <p>The price you see is the price you pay. Zero surcharges, zero booking fees, zero surprises.</p>
+        </div>
+        <div class="info-card reveal">
+          <div class="info-card-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+          <h3>Flexible Cancellation</h3>
+          <p>Life happens. Our flexible cancellation policy lets you change dates or cancel with ease.</p>
+        </div>
+        <div class="info-card reveal">
+          <div class="info-card-icon"><i class="fa-solid fa-headset"></i></div>
+          <h3>Dedicated Stay Host</h3>
+          <p>A WanderLux stay specialist is assigned to you for the duration of your booking for any assistance.</p>
+        </div>
+        <div class="info-card reveal">
+          <div class="info-card-icon"><i class="fa-solid fa-trophy"></i></div>
+          <h3>Top-Rated Properties</h3>
+          <p>We feature only properties with 4.0+ traveller ratings, ensuring consistently great experiences.</p>
+        </div>
+        <div class="info-card reveal">
+          <div class="info-card-icon"><i class="fa-solid fa-rotate"></i></div>
+          <h3>Instant Confirmation</h3>
+          <p>Receive your booking confirmation, itinerary and host contact within minutes of booking.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ─────────────────────────────────────────── -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">WanderLux</a>
+          <p>Curating extraordinary travel experiences across India and the world. Your journey, perfected.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="destination.html">Destinations</a></li>
+            <li><a href="house.html">Houses &amp; Stays</a></li>
+            <li><a href="car-rental.html">Car Rental</a></li>
+            <li><a href="queries.html">Queries &amp; Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Property Types</h4>
+          <ul class="footer-links">
+            <li><a href="house.html">Luxury Villas</a></li>
+            <li><a href="house.html">Cottages</a></li>
+            <li><a href="house.html">Houseboats</a></li>
+            <li><a href="house.html">Heritage Hotels</a></li>
+            <li><a href="house.html">Homestays</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item"><i class="fa-solid fa-phone"></i><span>+91 89303 77270</span></div>
+          <div class="footer-contact-item"><i class="fa-solid fa-envelope"></i><span>support@wanderlux.in</span></div>
+          <div class="footer-contact-item"><i class="fa-solid fa-location-dot"></i><span>Rewari, Haryana - 123401</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 WanderLux. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="queries.html">Privacy Policy</a>
+          <a href="queries.html">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Booking Modal -->
+  <div id="bookingModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-container">
+      <button class="modal-close" id="closeModal" data-testid="modal-close-btn" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-header">
+        <p class="modal-tagline">Secure Booking</p>
+        <h2 class="modal-title" id="modalTitle">Book Your Stay</h2>
+        <p class="modal-item-name" id="bookingItemName"></p>
+      </div>
+      <form id="bookingForm" class="booking-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="bookingName">Full Name</label>
+            <input type="text" id="bookingName" name="name" placeholder="Your full name" required data-testid="booking-name-input">
+          </div>
+          <div class="form-group">
+            <label for="bookingPhone">Phone Number</label>
+            <input type="tel" id="bookingPhone" name="phone" placeholder="+91 98765 43210" required data-testid="booking-phone-input">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="bookingEmail">Email Address</label>
+          <input type="email" id="bookingEmail" name="email" placeholder="you@example.com" required data-testid="booking-email-input">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="bookingDate">Check-in Date</label>
+            <input type="date" id="bookingDate" name="date" required data-testid="booking-date-input">
+          </div>
+          <div class="form-group">
+            <label for="bookingGuests">Number of Guests</label>
+            <input type="number" id="bookingGuests" name="guests" placeholder="e.g. 2" min="1" max="50" required data-testid="booking-guests-input">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="bookingNotes">Special Requests / Notes</label>
+          <textarea id="bookingNotes" name="notes" placeholder="Any special requirements..." data-testid="booking-notes-input"></textarea>
+        </div>
+        <button type="submit" class="form-submit-btn" data-testid="booking-submit-btn">
+          <i class="fa-solid fa-check-circle"></i> Confirm Booking
+        </button>
+      </form>
+      <div id="bookingSuccess" class="booking-success" role="alert">
+        <i class="fa-solid fa-circle-check"></i>
+        <h3>Stay Booked!</h3>
+        <p>Thank you! We'll confirm your stay details within 2 hours.</p>
+        <button class="btn btn--primary btn--md" id="closeSuccessBtn" data-testid="booking-success-close" style="margin-top:1.5rem">Continue Exploring</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="main.js"></script>
+  <script src="booking.js"></script>
+  <script src="search.js"></script>
+</body>
+</html>
